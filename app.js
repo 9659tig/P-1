@@ -11,6 +11,10 @@ server.get("/login",(req,res)=>{
     res.sendFile(__dirname+"/index.html");
 })
 
+server.get("/join",(req,res)=>{
+    res.sendFile(__dirname+"/index.html");
+})
+
 // server.use((req,res)=>{
 //     res.sendFile(__dirname+"/404.html");
 // })

@@ -45,7 +45,10 @@ function Home(){
 function reload(){
     switch (location.pathname) {
         case '/login': Login(); break;
-        case '/join': Join(); break;
+        case '/join':
+            Login();
+            Join();
+            break;
 
         default:
             break;
