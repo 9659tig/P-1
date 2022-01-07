@@ -1,46 +1,135 @@
-body { min-width: 300px; margin: 0 0 0 0;}
-ul {list-style:none;}
-a {text-decoration: none; color: inherit;}
+body {
+  min-width: 300px;
+  margin: 0 0 0 0;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
-.showing {display: none;}
+.showing {
+  display: none;
+}
 
-header {position: relative; font-family: sans-serif, "맑은 고딕", serif;}
+header {
+  position: relative;
+  font-family: sans-serif, "맑은 고딕", serif;
+}
 header button {
-    color: white; background-color: #045D8B;
-    font-size:xx-large; border: 0;
+  color: white;
+  background-color: #045d8b;
+  font-size: xx-large;
+  border: 0;
 }
 header .head {
-    color: white; background-color: #045D8B; padding: 0 20px;
-    display: flex; justify-content: space-between;
+  color: white;
+  background-color: #045d8b;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .board {
-    position: relative; padding: 50px 100px 20px 100px;
-    left: 50%; transform: translateX(-50%);
+  position: relative;
+  padding: 50px 100px 20px 100px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.board .top {display: flex; justify-content: space-between; padding: 0 20px 20px;}
-.board .top .board2 {border: 1px solid #045D8B;}
-.boardlist { border: 1px solid #045D8B; border-radius: 10px;}
-.boardlist ul {padding: 0 0 0 0; margin : 0 0;}
-.boardlist li {border-bottom: 1px solid #045D8B; padding : 0 20px;}
-.boardlist li:last-child {border-bottom: none;}
-.boardlist li a { line-height: 40px; display: flex; justify-content: space-between;}
+.board .top {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 20px;
+}
+.board .top .board2 {
+  border: 1px solid #045d8b;
+}
+.boardlist {
+  border: 1px solid #045d8b;
+  border-radius: 10px;
+}
+.boardlist ul {
+  padding: 0 0 0 0;
+  margin: 0 0;
+}
+.boardlist li {
+  border-bottom: 1px solid #045d8b;
+  padding: 0 20px;
+}
+.boardlist li:last-child {
+  border-bottom: none;
+}
+.boardlist li a {
+  line-height: 40px;
+  display: flex;
+  justify-content: space-between;
+}
 .boardlist li div {
-    padding-left: 40%; width: 100px; overflow: hidden;
-    white-space: nowrap; text-overflow: ellipsis; padding: 0; margin: 16px 0;
+  padding-left: 40%;
+  width: 100px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0;
+  margin: 16px 0;
 }
 
 .subMenu {
-    position: absolute; top: 71.825px; left: 0; width: 180px; height: 668.2px;
-    background-color: #CFDAFF;
+  position: absolute;
+  top: 71.825px;
+  left: 0;
+  width: 180px;
+  height: 668.2px;
+  background-color: #cfdaff;
 }
-.subMenu ul {margin: 0; padding: 0;}
+.subMenu ul {
+  margin: 0;
+  padding: 0;
+}
 .subMenu li {
-    display: flex;  justify-content:center; padding: 30px 0;
-    border-bottom: 1px solid #045D8B;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+  border-bottom: 1px solid #045d8b;
 }
 
-footer {position: relative; padding: 20px; text-align: center; margin-top: 20px;}
-footer ul {padding: 0; }
-footer li {display: inline-block; border: 1px solid #045D8B;}
-footer li a {padding: 0 10px;}
+.loginPage div {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-rows: 80px 40px;
+  column-gap: 50px;
+  width: 75%;
+  row-gap: 30px;
+}
+.loginPage input {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.loginPage button {
+  background-color: #045d8b;
+  color: white;
+  text-align: center;
+}
+
+footer {
+  position: relative;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+footer ul {
+  padding: 0;
+}
+footer li {
+  display: inline-block;
+  border: 1px solid #045d8b;
+}
+footer li a {
+  padding: 0 10px;
+}
