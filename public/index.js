@@ -6,7 +6,10 @@ pageindex = document.querySelector('.pageindex'),
 loginpage = document.querySelector('.loginPage'),
 home = document.querySelector('.home'),
 join = document.querySelector('.join'),
-realLogin = document.querySelector('.realLogin');
+realLogin = document.querySelector('.realLogin'),
+write = document.querySelector('.write'),
+assign = document.querySelector('.assign'),
+assignment = document.querySelector('.assignment');
 
 
 menu.innerText = '≡';
@@ -20,6 +23,7 @@ function Login(){
     board.classList.add('showing');
     pageindex.classList.add('showing');
     loginpage.classList.remove('showing');
+    assignment.classList.add('showing');
 }
 
 function Join(){
@@ -39,12 +43,22 @@ function Home(){
     board.classList.remove('showing');
     pageindex.classList.remove('showing');
     loginpage.classList.add('showing');
+    assignment.classList.add('showing');
     history.replaceState(location.origin,'',location.origin)
+}
+
+function Assign(){
+    history.pushState({page : 'write page'}, '', '/assignment')
+    board.classList.add('showing');
+    pageindex.classList.add('showing');
+    loginpage.classList.add('showing');
+    assignment.classList.remove('showing');
 }
 
 function reload(){
     switch (location.pathname) {
         case '/login': Login(); break;
+        case '/assignment' : Assign(); break;
         case '/join':
             Login();
             Join();
@@ -60,6 +74,7 @@ function init(){
     menu.addEventListener("click", showMenu);
     login.addEventListener("click", Login);
     home.addEventListener("click", Home);
+    assign.addEventListener("click",Assign);
     reload();
 }
 

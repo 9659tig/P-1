@@ -1,5 +1,6 @@
-const express = require("express");
-const server = express();
+const express = require("express"),
+createError = require('http-errors'),
+server = express();
 
 server.use(express.static(__dirname + "/public"))
 
@@ -15,8 +16,15 @@ server.get("/join",(req,res)=>{
     res.sendFile(__dirname+"/index.html");
 })
 
+server.get("/assignment",(req,res)=>{
+    res.sendFile(__dirname+"/index.html");
+})
+
 // server.use((req,res)=>{
 //     res.sendFile(__dirname+"/404.html");
+// })
+// server.get("/",(req,res)=>{
+//     throw new createError.BadRequest();
 // })
 
 server.listen(3000, (err)=>{

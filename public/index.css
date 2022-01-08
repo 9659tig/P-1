@@ -43,8 +43,9 @@ header .head {
   justify-content: space-between;
   padding: 0 20px 20px;
 }
-.board .top .board2 {
+.board .top .assign {
   border: 1px solid #045d8b;
+  border-radius: 5px;
 }
 .boardlist {
   border: 1px solid #045d8b;
@@ -115,6 +116,29 @@ header .head {
   background-color: #045d8b;
   color: white;
   text-align: center;
+}
+
+.assignment {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+}
+.assignment form {
+  border: 1px solid #045d8b;
+  border-radius: 10px;
+  height: 400px;
+  display: grid;
+  grid-template-rows: 50px 50px auto;
+  row-gap: 10px;
+  padding: 20px;
+}
+.assignment .write {
+  float: right;
+  border: 1px solid #045d8b;
+  border-radius: 5px;
+  margin-top: 15px;
 }
 
 footer {
