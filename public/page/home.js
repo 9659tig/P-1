@@ -1,4 +1,4 @@
-export default function Header(root) {
+export default function Homepage(root) {
 
     root.innerHTML  =
         `<header>

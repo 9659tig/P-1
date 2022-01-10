@@ -1,4 +1,4 @@
-import Home from "/home.js";
+import Homepage from "/home.js";
 
 const menu = document.querySelector('.menu'),
 sidemenu = document.querySelector('.subMenu'),
@@ -83,7 +83,7 @@ function reload(){
 
 
 function init(){
-    Home(root);
+    Homepage(root);
 
     menu.addEventListener("click", showMenu);
     login.addEventListener("click", Login);
