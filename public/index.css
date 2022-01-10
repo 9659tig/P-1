@@ -140,6 +140,10 @@ header .head {
   border-radius: 5px;
   margin-top: 15px;
 }
+.assignment .submit {
+  position: absolute;
+  top: 95%;
+}
 
 footer {
   position: relative;

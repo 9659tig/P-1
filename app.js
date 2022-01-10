@@ -1,24 +1,13 @@
 const express = require("express"),
-createError = require('http-errors'),
+// createError = require('http-errors'),
 server = express();
 
 server.use(express.static(__dirname + "/public"))
 
-server.get("/",(req,res)=>{
+server.get("/*",(req,res)=>{
     res.sendFile(__dirname+"/index.html");
 })
 
-server.get("/login",(req,res)=>{
-    res.sendFile(__dirname+"/index.html");
-})
-
-server.get("/join",(req,res)=>{
-    res.sendFile(__dirname+"/index.html");
-})
-
-server.get("/assignment",(req,res)=>{
-    res.sendFile(__dirname+"/index.html");
-})
 
 // server.use((req,res)=>{
 //     res.sendFile(__dirname+"/404.html");

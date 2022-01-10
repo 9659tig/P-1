@@ -1,3 +1,5 @@
+import Home from "/home.js";
+
 const menu = document.querySelector('.menu'),
 sidemenu = document.querySelector('.subMenu'),
 login = document.querySelector('.login'),
@@ -9,8 +11,8 @@ join = document.querySelector('.join'),
 realLogin = document.querySelector('.realLogin'),
 write = document.querySelector('.write'),
 assign = document.querySelector('.assign'),
-assignment = document.querySelector('.assignment');
-
+assignment = document.querySelector('.assignment'),
+root = document.querySelector('#root');
 
 menu.innerText = '≡';
 
@@ -63,6 +65,15 @@ function reload(){
             Login();
             Join();
             break;
+        case './assignment+create' :
+            var body = '';
+            request.on('data',function(data){
+                body = body + data;
+            });
+            request.on('end',function(){
+                var post = qs.parse(body);
+            })
+
 
         default:
             break;
@@ -70,11 +81,16 @@ function reload(){
 
 }
 
+
 function init(){
+    Home(root);
+
     menu.addEventListener("click", showMenu);
     login.addEventListener("click", Login);
     home.addEventListener("click", Home);
     assign.addEventListener("click",Assign);
+
+
     reload();
 }
 
