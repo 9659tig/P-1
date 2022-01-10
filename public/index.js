@@ -1,34 +1,22 @@
-import Homepage from "/home.js";
-
-const menu = document.querySelector('.menu'),
-sidemenu = document.querySelector('.subMenu'),
-login = document.querySelector('.login'),
-board = document.querySelector('.board'),
-pageindex = document.querySelector('.pageindex'),
-loginpage = document.querySelector('.loginPage'),
-home = document.querySelector('.home'),
-join = document.querySelector('.join'),
-realLogin = document.querySelector('.realLogin'),
-write = document.querySelector('.write'),
-assign = document.querySelector('.assign'),
-assignment = document.querySelector('.assignment'),
-root = document.querySelector('#root');
-
-menu.innerText = '≡';
+import Homepage from "./page/home.js";
 
 function showMenu(){
+    const sidemenu = document.querySelector('.subMenu');
     sidemenu.classList.toggle('showing');
 }
 
 function Login(){
     history.pushState({page : 'login page'}, '', '/login')
-    board.classList.add('showing');
-    pageindex.classList.add('showing');
-    loginpage.classList.remove('showing');
-    assignment.classList.add('showing');
+    document.querySelector('.board').classList.add('showing');
+    document.querySelector('.pageindex').classList.add('showing');
+    document.querySelector('.assignment').classList.add('showing');
+    document.querySelector('.loginPage').classList.remove('showing');
 }
 
 function Join(){
+    const join = document.querySelector('.join');
+    const realLogin = document.querySelector('.realLogin');
+
     if(join.innerText === '회원가입'){
         history.pushState({page : 'join page'}, '', '/join')
         join.innerText='나가기';
@@ -42,19 +30,21 @@ function Join(){
 }
 
 function Home(){
-    board.classList.remove('showing');
-    pageindex.classList.remove('showing');
-    loginpage.classList.add('showing');
-    assignment.classList.add('showing');
+    document.querySelector('.board').classList.remove('showing');
+    document.querySelector('.pageindex').classList.remove('showing');
+    document.querySelector('.assignment').classList.add('showing');
+    document.querySelector('.loginPage').classList.add('showing');
+
     history.replaceState(location.origin,'',location.origin)
 }
 
 function Assign(){
     history.pushState({page : 'write page'}, '', '/assignment')
-    board.classList.add('showing');
-    pageindex.classList.add('showing');
-    loginpage.classList.add('showing');
-    assignment.classList.remove('showing');
+
+    document.querySelector('.board').classList.add('showing');
+    document.querySelector('.pageindex').classList.add('showing');
+    document.querySelector('.assignment').classList.remove('showing');
+    document.querySelector('.loginPage').classList.add('showing');
 }
 
 function reload(){
@@ -65,14 +55,14 @@ function reload(){
             Login();
             Join();
             break;
-        case './assignment+create' :
-            var body = '';
-            request.on('data',function(data){
-                body = body + data;
-            });
-            request.on('end',function(){
-                var post = qs.parse(body);
-            })
+        // case './assignment+create' :
+        //     const body = '';
+        //     request.on('data',function(data){
+        //         body = body + data;
+        //     });
+        //     request.on('end',function(){
+        //         const post = qs.parse(body);
+        //     })
 
 
         default:
@@ -83,12 +73,25 @@ function reload(){
 
 
 function init(){
+    const write = document.querySelector('.write');
+    const assignment = document.querySelector('.assignment');
+    const root = document.querySelector('#root');
+
     Homepage(root);
+
+    const menu = document.querySelector('.menu');
+    const login = document.querySelector('.login');
+    const home = document.querySelector('.home');
+    const assign = document.querySelector('.assign');
+    const join = document.querySelector('.join');
+
+    menu.innerText = '≡';
 
     menu.addEventListener("click", showMenu);
     login.addEventListener("click", Login);
     home.addEventListener("click", Home);
     assign.addEventListener("click",Assign);
+    join.addEventListener("click",Join);
 
 
     reload();

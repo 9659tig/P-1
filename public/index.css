@@ -84,6 +84,7 @@ header .head {
   width: 180px;
   height: 668.2px;
   background-color: #cfdaff;
+  z-index: 1;
 }
 .subMenu ul {
   margin: 0;

@@ -41,7 +41,7 @@ export default function Homepage(root) {
 <section class="loginPage showing">
     <div>
         <input type="text" placeholder="ID를 입력하세요.">
-        <button class="join" onclick='Join()'>회원가입</button>
+        <button class="join">회원가입</button>
         <button class="realLogin">로그인</button>
     </div>
 </section>
@@ -75,6 +75,6 @@ export default function Homepage(root) {
         <li><a href="#a">8</a></li>
         <li><a href="#a">9</a></li>
     </ul>
-</footer>;
+</footer>
         `;
 }
