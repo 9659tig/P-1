@@ -1,13 +1,19 @@
 const express = require("express"),
 // createError = require('http-errors'),
 server = express();
+const bodyParser= require('body-parser');
 
-server.use(express.static(__dirname + "/public"))
+
+server.use(express.static(__dirname + "/public"));
+server.use(bodyParser.urlencoded({ extended: true }));
 
 server.get("/*",(req,res)=>{
     res.sendFile(__dirname+"/index.html");
 })
 
+server.post('/assignment', (req, res) => {
+    console.log(req.body)
+})
 
 // server.use((req,res)=>{
 //     res.sendFile(__dirname+"/404.html");
