@@ -1,4 +1,7 @@
+import Header from "./page/header.js";
 import Homepage from "./page/home.js";
+import Loginpage from "./page/login.js";
+import Writepage from "./page/write.js";
 
 function showMenu(){
     const sidemenu = document.querySelector('.subMenu');
@@ -7,6 +10,11 @@ function showMenu(){
 
 function Login(){
     history.pushState({page : 'login page'}, '', '/login')
+    const login = document.querySelector('.loginPage');
+    Loginpage(login);
+
+    document.querySelector('.join').addEventListener("click",Join);
+
     document.querySelector('.board').classList.add('showing');
     document.querySelector('.pageindex').classList.add('showing');
     document.querySelector('.assignment').classList.add('showing');
@@ -41,6 +49,9 @@ function Home(){
 function Assign(){
     history.pushState({page : 'write page'}, '', '/assignment')
 
+    const write = document.querySelector('.assignment');
+    Writepage(write);
+
     document.querySelector('.board').classList.add('showing');
     document.querySelector('.pageindex').classList.add('showing');
     document.querySelector('.assignment').classList.remove('showing');
@@ -73,26 +84,25 @@ function reload(){
 
 
 function init(){
-    const write = document.querySelector('.write');
-    const assignment = document.querySelector('.assignment');
     const root = document.querySelector('#root');
+    Header(root);
 
-    Homepage(root);
+    const main = document.querySelector('.main');
+    Homepage(main);
 
     const menu = document.querySelector('.menu');
-    const login = document.querySelector('.login');
-    const home = document.querySelector('.home');
-    const assign = document.querySelector('.assign');
-    const join = document.querySelector('.join');
-
     menu.innerText = '≡';
-
     menu.addEventListener("click", showMenu);
-    login.addEventListener("click", Login);
-    home.addEventListener("click", Home);
-    assign.addEventListener("click",Assign);
-    join.addEventListener("click",Join);
 
+    document.querySelector('.login').addEventListener("click", Login);
+    document.querySelector('.home').addEventListener("click", Home);
+    document.querySelector('.assign').addEventListener("click",Assign);
+
+    window.addEventListener('popstate', function () {
+        // console.log('popstate', history.state);
+        console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+        reload();
+    });
 
     reload();
 }
