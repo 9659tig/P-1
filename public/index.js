@@ -2,6 +2,10 @@ import Header from "./page/header.js";
 import Homepage from "./page/home.js";
 import Loginpage from "./page/login.js";
 import Writepage from "./page/write.js";
+import secretboard from "./page/secretboad.js";
+import infoboard from "./page/infoboard.js";
+import promboard from "./page/promboard.js";
+import swboard from "./page/swboard.js";
 
 function showMenu(){
     const sidemenu = document.querySelector('.subMenu');
@@ -10,15 +14,11 @@ function showMenu(){
 
 function Login(){
     history.pushState({page : 'login page'}, '', '/login')
-    const login = document.querySelector('.loginPage');
-    Loginpage(login);
+
+    const main = document.querySelector('.main');
+    Loginpage(main);
 
     document.querySelector('.join').addEventListener("click",Join);
-
-    document.querySelector('.board').classList.add('showing');
-    document.querySelector('.pageindex').classList.add('showing');
-    document.querySelector('.assignment').classList.add('showing');
-    document.querySelector('.loginPage').classList.remove('showing');
 }
 
 function Join(){
@@ -31,35 +31,32 @@ function Join(){
         realLogin.innerText = "회원가입";
     }
     else {
-        history.back();
+        history.pushState({page : 'login page'}, '', '/login')
         join.innerText='회원가입';
         realLogin.innerText = "로그인";
     }
 }
 
 function Home(){
-    document.querySelector('.board').classList.remove('showing');
-    document.querySelector('.pageindex').classList.remove('showing');
-    document.querySelector('.assignment').classList.add('showing');
-    document.querySelector('.loginPage').classList.add('showing');
-
     history.replaceState(location.origin,'',location.origin)
+
+    const main = document.querySelector('.main');
+    Homepage(main);
+
+    document.querySelector('.assign').addEventListener("click",Assign);
 }
 
 function Assign(){
     history.pushState({page : 'write page'}, '', '/assignment')
 
-    const write = document.querySelector('.assignment');
-    Writepage(write);
-
-    document.querySelector('.board').classList.add('showing');
-    document.querySelector('.pageindex').classList.add('showing');
-    document.querySelector('.assignment').classList.remove('showing');
-    document.querySelector('.loginPage').classList.add('showing');
+    const main = document.querySelector('.main');
+    Writepage(main);
 }
 
 function reload(){
+
     switch (location.pathname) {
+        case '/': Home(); break
         case '/login': Login(); break;
         case '/assignment' : Assign(); break;
         case '/join':
@@ -75,7 +72,6 @@ function reload(){
         //         const post = qs.parse(body);
         //     })
 
-
         default:
             break;
     }
@@ -87,24 +83,20 @@ function init(){
     const root = document.querySelector('#root');
     Header(root);
 
-    const main = document.querySelector('.main');
-    Homepage(main);
-
     const menu = document.querySelector('.menu');
     menu.innerText = '≡';
     menu.addEventListener("click", showMenu);
 
-    document.querySelector('.login').addEventListener("click", Login);
-    document.querySelector('.home').addEventListener("click", Home);
-    document.querySelector('.assign').addEventListener("click",Assign);
-
     window.addEventListener('popstate', function () {
-        // console.log('popstate', history.state);
+        console.log('popstate', history.state);
         console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
         reload();
     });
 
     reload();
+
+    document.querySelector('.login').addEventListener("click", Login);
+    document.querySelector('.home').addEventListener("click", Home);
 }
 
 init();

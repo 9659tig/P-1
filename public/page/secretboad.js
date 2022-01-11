@@ -3,7 +3,7 @@ export default function Homepage(board) {
         `
         <section class="board">
             <div class="top">
-                <div>자유게시판</div>
+                <div>비밀게시판</div>
                 <div class="assign">등록하기</div>
             </div>
 

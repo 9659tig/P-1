@@ -1,5 +1,6 @@
 export default function Write(assignment){
     assignment.innerHTML=`
+    <section class="assignment">
         <form action="http://localhost:3000/assignment_create" method="post">
             <select name="boardlist" aria-placeholder="게시판을 선택하세요">
                 <option value="">게시판을 선택해주세요</option>
@@ -14,5 +15,6 @@ export default function Write(assignment){
             <input type="submit" class="submit">
         </form>
         <span class="write">글쓰기</span>
+    </section>
         `;
 }

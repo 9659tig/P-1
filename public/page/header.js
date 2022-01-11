@@ -11,17 +11,15 @@ export default function Header(root) {
         <section class="subMenu showing">
             <div>
                 <ul>
-                    <li>자유 게시판</li>
-                    <li>비밀 게시판</li>
-                    <li>정보 게시판</li>
-                    <li>홍보 게시판</li>
-                    <li>sw 게시판</li>
+                    <li class="free">자유 게시판</li>
+                    <li class="secret">비밀 게시판</li>
+                    <li class="info">정보 게시판</li>
+                    <li class="prom">홍보 게시판</li>
+                    <li class="sw">sw 게시판</li>
                 </ul>
             </div>
         </section>
 
         <div class="main"></div>
-        <section class="loginPage"></section>
-        <section class="assignment"></section>
         `;
 }
