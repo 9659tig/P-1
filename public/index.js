@@ -1,6 +1,7 @@
 import Header from "./page/header.js";
 import Homepage from "./page/home.js";
 import Loginpage from "./page/login.js";
+import Joinpage from "./page/join.js";
 import Writepage from "./page/write.js";
 import secretboard from "./page/secretboad.js";
 import infoboard from "./page/infoboard.js";
@@ -13,7 +14,7 @@ function showMenu(){
 }
 
 function Login(){
-    history.pushState({page : 'login page'}, '', '/login')
+    history.pushState({page : 'login page'}, '', '/login');
 
     const main = document.querySelector('.main');
     Loginpage(main);
@@ -21,20 +22,17 @@ function Login(){
     document.querySelector('.join').addEventListener("click",Join);
 }
 
-function Join(){
-    const join = document.querySelector('.join');
-    const realLogin = document.querySelector('.realLogin');
+function prev(){
+    window.history.back();
+}
 
-    if(join.innerText === '회원가입'){
-        history.pushState({page : 'join page'}, '', '/join')
-        join.innerText='나가기';
-        realLogin.innerText = "회원가입";
-    }
-    else {
-        history.pushState({page : 'login page'}, '', '/login')
-        join.innerText='회원가입';
-        realLogin.innerText = "로그인";
-    }
+function Join(){
+    history.pushState({page : 'join page'}, '', '/join');
+
+    const main = document.querySelector('.main');
+    Joinpage(main);
+
+    document.querySelector('.exit').addEventListener("click",prev);
 }
 
 function Home(){
@@ -47,7 +45,7 @@ function Home(){
 }
 
 function Assign(){
-    history.pushState({page : 'write page'}, '', '/assignment')
+    history.pushState({page : 'write page'}, '', '/assignment');
 
     const main = document.querySelector('.main');
     Writepage(main);
@@ -88,8 +86,8 @@ function init(){
     menu.addEventListener("click", showMenu);
 
     window.addEventListener('popstate', function () {
-        console.log('popstate', history.state);
-        console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+        // console.log('popstate', history.state);
+        // console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
         reload();
     });
 
