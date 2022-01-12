@@ -12,6 +12,10 @@ const db = mysql.createPool({
     database : 'P_1'
 });
 
+// router.get('/assignmetn',(req,res,next)=>{
+
+// })
+
 router.post('/assignment', (req, res) => {
     let boardlist = req.body.boardlist;
     let title = req.body.title;
@@ -26,7 +30,7 @@ router.post('/assignment', (req, res) => {
                 if(err){
                     console.log(err);
                 }
-                console.log(results);
+                res.redirect('/');
             });
 
             connection.query('SELECT * FROM board', function(err,results,fields){
@@ -35,7 +39,6 @@ router.post('/assignment', (req, res) => {
                 }
                 console.log(results);
             });
-
             connection.release()
         }
     });

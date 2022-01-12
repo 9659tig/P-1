@@ -7,7 +7,7 @@ server.use(express.static(__dirname + "/public"))
 server.use(router)
 
 
-server.get("/",(req,res)=>{
+server.get("/*",(req,res)=>{
     res.sendFile(__dirname+"/index.html");
 })
 
