@@ -3,7 +3,7 @@ import Homepage from "./view/home.js";
 import Loginpage from "./view/login.js";
 import Joinpage from "./view/join.js";
 import Writepage from "./view/write.js";
-import mysql from "./board/mysql.js";
+// import mysql from "./board/mysql.js";
 
 function showMenu(){
     const sidemenu = document.querySelector('.subMenu');
@@ -48,11 +48,11 @@ function Assign(){
     Writepage(main);
 }
 
-function temp(){
-    istory.pushState({page : 'mysql'}, '', '/mysql');
-    const main = document.querySelector('.main');
-    mysql(main);
-}
+// function temp(){
+//     istory.pushState({page : 'mysql'}, '', '/mysql');
+//     const main = document.querySelector('.main');
+//     mysql(main);
+// }
 
 function reload(){
 
@@ -64,7 +64,7 @@ function reload(){
             Login();
             Join();
             break;
-        case '/mysql': temp(); break;
+        // case '/mysql': temp(); break;
         case './assignment+create' :
             // const body = '';
             // request.on('data',function(data){

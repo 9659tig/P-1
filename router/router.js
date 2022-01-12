@@ -9,7 +9,7 @@ const db = mysql.createPool({
     host : 'localhost',
     user : 'root',
     password : '111111',
-    database : 'opentutorials'
+    database : 'P_1'
 });
 
 router.post('/assignment', (req, res) => {
@@ -21,15 +21,15 @@ router.post('/assignment', (req, res) => {
         if(err)
             throw err;
         else{
-            connection.query('INSERT INTO topic (title, description, created, author) VALUES(?,?,NOW(),"익명")',
-            [title, description], function(err,results){
+            connection.query('INSERT INTO board (boardlist, title, description, created) VALUES(?,?,?,NOW())',
+            [boardlist, title, description], function(err,results){
                 if(err){
                     console.log(err);
                 }
                 console.log(results);
             });
 
-            connection.query('SELECT * FROM topic', function(err,results,fields){
+            connection.query('SELECT * FROM board', function(err,results,fields){
                 if(err){
                     console.log(err);
                 }

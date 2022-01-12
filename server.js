@@ -2,12 +2,9 @@ const express = require("express"),
 // createError = require('http-errors'),
 server = express();
 const router = require('./router/router');
-const mysql = require('./router/mysql');
 
-server.set('view engine','ejs')
 server.use(express.static(__dirname + "/public"))
 server.use(router)
-server.use(mysql)
 
 
 server.get("/",(req,res)=>{
