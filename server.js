@@ -1,18 +1,17 @@
 const express = require("express"),
 // createError = require('http-errors'),
 server = express();
-const bodyParser= require('body-parser');
+const router = require('./router/router');
+const mysql = require('./router/mysql');
+
+server.set('view engine','ejs')
+server.use(express.static(__dirname + "/public"))
+server.use(router)
+server.use(mysql)
 
 
-server.use(express.static(__dirname + "/public"));
-server.use(bodyParser.urlencoded({ extended: true }));
-
-server.get("/*",(req,res)=>{
+server.get("/",(req,res)=>{
     res.sendFile(__dirname+"/index.html");
-})
-
-server.post('/assignment', (req, res) => {
-    console.log(req.body)
 })
 
 // server.use((req,res)=>{

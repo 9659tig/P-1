@@ -1,12 +1,9 @@
-import Header from "./page/header.js";
-import Homepage from "./page/home.js";
-import Loginpage from "./page/login.js";
-import Joinpage from "./page/join.js";
-import Writepage from "./page/write.js";
-import secretboard from "./page/secretboad.js";
-import infoboard from "./page/infoboard.js";
-import promboard from "./page/promboard.js";
-import swboard from "./page/swboard.js";
+import Header from "./view/header.js";
+import Homepage from "./view/home.js";
+import Loginpage from "./view/login.js";
+import Joinpage from "./view/join.js";
+import Writepage from "./view/write.js";
+import mysql from "./board/mysql.js";
 
 function showMenu(){
     const sidemenu = document.querySelector('.subMenu');
@@ -51,6 +48,12 @@ function Assign(){
     Writepage(main);
 }
 
+function temp(){
+    istory.pushState({page : 'mysql'}, '', '/mysql');
+    const main = document.querySelector('.main');
+    mysql(main);
+}
+
 function reload(){
 
     switch (location.pathname) {
@@ -61,6 +64,7 @@ function reload(){
             Login();
             Join();
             break;
+        case '/mysql': temp(); break;
         case './assignment+create' :
             // const body = '';
             // request.on('data',function(data){
