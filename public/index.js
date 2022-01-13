@@ -1,9 +1,32 @@
-import Header from "./view/header.js";
-import Homepage from "./view/home.js";
-import Loginpage from "./view/login.js";
-import Joinpage from "./view/join.js";
-import Writepage from "./view/write.js";
-// import mysql from "./board/mysql.js";
+import Header from "./page/header.js";
+import Homepage from "./page/home.js";
+import Loginpage from "./page/login.js";
+import Joinpage from "./page/join.js";
+import Writepage from "./page/write.js";
+// import test from "../router/router.js";
+// const Header = require("./page/header.js");
+// const Homepage = require("./page/home.js");
+// const Loginpage = require("./page/login.js");
+// const Joinpage = require("./page/join.js");
+// const Writepage = require("./page/write.js");
+
+// function temp(){
+//     const ul = document.querySelector('textul');
+//     let li = document.createElement('li');
+//     let when = document.createElement('p');
+//     let what = document.createElement('div');
+//     let who = document.createElement('p');
+
+//     test(when,what,who);
+//     // when.innerText = date;
+//     // what.innerText = text;
+//     // who.innerText = author;
+//     li.appendChild(when);
+//     li.appendChild(what);
+//     li.appendChild(who);
+//     ul.appendChild(li);
+// }
+
 
 function showMenu(){
     const sidemenu = document.querySelector('.subMenu');
@@ -36,7 +59,9 @@ function Home(){
     history.replaceState(location.origin,'',location.origin)
 
     const main = document.querySelector('.main');
-    Homepage(main);
+    // let text = "";
+    // test(text);
+    Homepage(main,"date","text","author");
 
     document.querySelector('.assign').addEventListener("click",Assign);
 }
@@ -45,17 +70,11 @@ function Assign(){
     history.pushState({page : 'write page'}, '', '/assignment');
 
     const main = document.querySelector('.main');
+
     Writepage(main);
 }
 
-// function temp(){
-//     istory.pushState({page : 'mysql'}, '', '/mysql');
-//     const main = document.querySelector('.main');
-//     mysql(main);
-// }
-
 function reload(){
-
     switch (location.pathname) {
         case '/': Home(); break
         case '/login': Login(); break;
@@ -64,15 +83,6 @@ function reload(){
             Login();
             Join();
             break;
-        // case '/mysql': temp(); break;
-        case './assignment+create' :
-            // const body = '';
-            // request.on('data',function(data){
-            //     body = body + data;
-            // });
-            // request.on('end',function(){
-            //     const post = qs.parse(body);
-            // })
 
         default:
             break;
@@ -96,6 +106,12 @@ function init(){
     });
 
     reload();
+
+    // const textul = document.querySelector('.textul');
+    // document.createElement('li');
+    // document.createElement('p');
+    // document.createElement('div');
+    // document.createElement('p');
 
     document.querySelector('.login').addEventListener("click", Login);
     document.querySelector('.home').addEventListener("click", Home);
