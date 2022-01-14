@@ -90,8 +90,7 @@ function reload(){
 
 }
 
-
-function init(){
+function load(){
     const root = document.querySelector('#root');
     Header(root);
 
@@ -99,24 +98,27 @@ function init(){
     menu.innerText = '≡';
     menu.addEventListener("click", showMenu);
 
-    window.addEventListener('popstate', function () {
-        // console.log('popstate', history.state);
-        // console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
-        reload();
-    });
-
-    window.onload=()=>{
-        reload();
-    }
-
-    // const textul = document.querySelector('.textul');
-    // document.createElement('li');
-    // document.createElement('p');
-    // document.createElement('div');
-    // document.createElement('p');
+    reload();
 
     document.querySelector('.login').addEventListener("click", Login);
     document.querySelector('.home').addEventListener("click", Home);
+}
+
+function init(){
+    window.addEventListener('popstate',route);
+
+    window.onload = () => {
+        load();
+    }
+    // const root = document.querySelector('#root');
+    // Header(root);
+
+    // const menu = document.querySelector('.menu');
+    // menu.innerText = '≡';
+    // menu.addEventListener("click", showMenu);
+
+    // document.querySelector('.login').addEventListener("click", Login);
+    // document.querySelector('.home').addEventListener("click", Home);
 }
 
 init();
