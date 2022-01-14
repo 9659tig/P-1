@@ -1,4 +1,6 @@
 const path = require('path');
+const miniCssExtract  = require('mini-css-extract-plugin')
+
 module.exports = {
     target: ['web', 'es5'],
     mode: 'development',
@@ -28,10 +30,23 @@ module.exports = {
     // }
     module : {
       rules : [
+        {
+            test : /\.css$/,
+            use : [ miniCssExtract.loader,
+                {
+                    loader : 'css-loader',
+                    options : {
+                        modules : {
+                            localIdentName : "[local]--[hash:base64:5]"
+                        }
+                    }
+                }
+            ]
+        },
           {
               test : /\.js$/,
               exclude : /node_modules/,
-              use : ['babel-loader']
+              use : { loader: "babel-loader" }
           }
       ]
   },

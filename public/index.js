@@ -105,7 +105,7 @@ function load(){
 }
 
 function init(){
-    window.addEventListener('popstate',route);
+    window.addEventListener('popstate',load());
     console.log("test");
 
     window.onload = () => {
