@@ -1,20 +1,28 @@
-const express = require("express"),
+const express = require("express");
 // createError = require('http-errors'),
-server = express();
-const router = require('./router/router');
-const path = require('path');
+const mysql = require('./router/mysql');
+const server = express();
+const webpack = require("webpack");
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const webpackConfig = require("./webpack.config.js");
+const compiler = webpack(webpackConfig);
 
 // server.set('views', path.join(__dirname,'views'));
 // server.engine('html', require('ejs').renderFile);
 // server.set('view engine','html');
-
+server.use(
+    webpackDevMiddleware(compiler, {
+      publicPath: webpackConfig.output.publicPath,
+      stats: { colors: true },
+    })
+  );
 server.use(express.static(__dirname + "/public"))
-server.use(router)
+server.use(mysql)
 
-server.get("/*",(req,res)=>{
-    res.sendFile(__dirname+"/views/index.html");
-    // res.render('index', { date:'Express', text:"yess", author:"익명" });
-})
+// server.get("/*",(req,res)=>{
+//     res.sendFile(__dirname+"/views/index.html");
+//     // res.render('index', { date:'Express', text:"yess", author:"익명" });
+// })
 
 
 // server.get("/",(req,res)=>{

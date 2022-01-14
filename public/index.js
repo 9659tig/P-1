@@ -105,7 +105,9 @@ function init(){
         reload();
     });
 
-    reload();
+    window.onload=()=>{
+        reload();
+    }
 
     // const textul = document.querySelector('.textul');
     // document.createElement('li');

@@ -12,11 +12,13 @@ module.exports = {
             </div>
         </section>
         `;
-    }, list:function(boards){
-        const list = '<ul>';
+    },
+    list:function(boards){
+        let list = '<ul>';
         let i = 0;
         while(i< boards.lenth){
-            list = list + `<li class="text"><a href="#a"><p class="date">${boards[i].date}</p><div class="text">${boards[i].description}</div><p class="name">${boards[i].author}</p></a></li>`
+            list = list + `
+            <li ><a href="#a"><p>${boards[i].date}</p><div>${boards[i].description}</div><p>${boards[i].author}</p></a></li>`;
             i = i+1;
         }
         list = list+'</ul>';

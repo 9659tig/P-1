@@ -4,7 +4,8 @@
   "description": "this is about AJOU-BEGINNER project 1",
   "main": "(app.js)",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,22 @@
   },
   "homepage": "https://github.com/9659tig/P-1#readme",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "@babel/runtime-corejs3": "^7.16.8",
     "body-parser": "^1.19.1",
+    "core-js": "^3.20.2",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "mysql": "^2.18.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.16.8",
+    "babel-loader": "^8.2.3",
+    "mocha-jsdom": "^2.0.0",
+    "webpack": "^5.66.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-middleware": "^5.3.0"
   }
-
 }

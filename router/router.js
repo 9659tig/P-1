@@ -1,67 +1,112 @@
-// const test = require( "../public/index.js");
+import Header from "../public/page/header.js";
+import Homepage from "../public/page/home.js";
+import Loginpage from "../public/page/login.js";
+import Joinpage from "../public/page/join.js";
+import Writepage from "../public/page/write.js";
+import router from "./mysql.js";
 
-const express = require("express"),
-router = express.Router();
-const bodyParser= require('body-parser');
-const { response } = require("express");
-const mysql = require('mysql2');
-var path = require('path');
-const template = require('../public/page/templete.js');
+function showMenu(){
+    const sidemenu = document.querySelector('.subMenu');
+    sidemenu.classList.toggle('showing');
+}
 
-router.use(bodyParser.urlencoded({ extended: false }));
+function Login(){
+    history.pushState({page : 'login page'}, '', '/login');
 
-const db = mysql.createPool({
-    host : 'localhost',
-    user : 'root',
-    password : '111111',
-    database : 'P_1'
-});
+    const main = document.querySelector('.main');
+    Loginpage(main);
 
-router.post('/assignment', (req, res) => {
-    let boardlist = req.body.boardlist;
-    let title = req.body.title;
-    let description = req.body.description;
-    // let date = req.body.date;
-    // let author = req.body.author;
+    document.querySelector('.join').addEventListener("click",Join);
+}
 
-    db.getConnection(function(err,connection){
-        if(err)
-            throw err;
-        else{
-            connection.query('INSERT INTO board (boardlist, title, description, created) VALUES(?,?,?,NOW())',
-            [boardlist, title, description], function(err,results){
-                if(err){
-                    console.log(err);
-                }
-            });
+function prev(){
+    window.history.back();
+}
 
-            connection.query('SELECT * FROM board WHERE boardlist = "free" ', function(err,results){
-                if(err){
-                    console.log(err);
-                }
-                let list = template.list(results);
-                let html = template.HTML(list)
+function Join(){
+    history.pushState({page : 'join page'}, '', '/join');
+
+    const main = document.querySelector('.main');
+    Joinpage(main);
+
+    document.querySelector('.exit').addEventListener("click",prev);
+}
+
+function Home(){
+    history.replaceState(location.origin,'',location.origin)
+
+    const main = document.querySelector('.main');
+    // let text = "";
+    // test(text);
+    Homepage(main,"date","text","author");
+
+    document.querySelector('.assign').addEventListener("click",Assign);
+}
+
+function Assign(){
+    history.pushState({page : 'write page'}, '', '/assignment');
+
+    const main = document.querySelector('.main');
+
+    Writepage(main);
+}
+
+function reload(){
+    switch (location.pathname) {
+        case '/': Home(); break
+        case '/login': Login(); break;
+        case '/assignment' : Assign(); break;
+        case '/join':
+            Login();
+            Join();
+            break;
+
+        default:
+            break;
+    }
+
+}
 
 
+export default function init(){
+    const root = document.querySelector('#root');
+    Header(root);
 
-                // export default function test(when, what, who){
-                //     when.innerText = date;
-                //     what.innerText = text;
-                //     who.innerText = author;
-                // }
+    const menu = document.querySelector('.menu');
+    menu.innerText = '≡';
+    menu.addEventListener("click", showMenu);
 
-                // response.writeHead(200);
-                // response.end(template);
-                console.log(results);
-                response.writeHead(200);
-                response.end("html");
+    // window.addEventListener('popstate', function () {
+    //     // console.log('popstate', history.state);
+    //     // console.log("location: " + document.location + ", state: " + JSON.stringify(event.state));
+    //     reload();
+    // });
 
-                res.redirect('/');
-            });
-            // console.log(req.body);
-            connection.release()
-        }
-    });
-})
+    // window.onload=()=>{
+    //     reload();
+    // }
 
-module.exports = router;
+    // const textul = document.querySelector('.textul');
+    // document.createElement('li');
+    // document.createElement('p');
+    // document.createElement('div');
+    // document.createElement('p');
+    reload();
+
+    document.querySelector('.login').addEventListener("click", Login);
+    document.querySelector('.home').addEventListener("click", Home);
+}
+// init();
+async function route(){
+    const root = document.querySelector('#root');
+    Header(root);
+
+    const menu = document.querySelector('.menu');
+    menu.innerText = '≡';
+    menu.addEventListener("click", showMenu);
+
+    reload();
+
+    document.querySelector('.login').addEventListener("click", Login);
+    document.querySelector('.home').addEventListener("click", Home);
+}
