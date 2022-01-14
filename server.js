@@ -10,13 +10,16 @@ const compiler = webpack(webpackConfig);
 // server.set('views', path.join(__dirname,'views'));
 // server.engine('html', require('ejs').renderFile);
 // server.set('view engine','html');
+
 server.use(
     webpackDevMiddleware(compiler, {
       publicPath: webpackConfig.output.publicPath,
       stats: { colors: true },
     })
   );
+
 server.use(express.static(__dirname + "/public"))
+
 server.use(mysql)
 
 // server.get("/*",(req,res)=>{

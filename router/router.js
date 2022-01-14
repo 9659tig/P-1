@@ -3,7 +3,6 @@ import Homepage from "../public/page/home.js";
 import Loginpage from "../public/page/login.js";
 import Joinpage from "../public/page/join.js";
 import Writepage from "../public/page/write.js";
-import router from "./mysql.js";
 
 function showMenu(){
     const sidemenu = document.querySelector('.subMenu');

@@ -106,8 +106,11 @@ function load(){
 
 function init(){
     window.addEventListener('popstate',route);
+    console.log("test");
 
     window.onload = () => {
+        const root = document.querySelector('#root');
+        root.innerText="Hello";
         load();
     }
     // const root = document.querySelector('#root');

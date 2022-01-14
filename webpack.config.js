@@ -1,10 +1,11 @@
 const path = require('path');
 module.exports = {
-    target: "node",
+    target: ['web', 'es5'],
     mode: 'development',
     entry: './public/index.js',
-    output: { path: path.resolve(__dirname, 'dist'),
+    output: {
      filename: 'bundle.js',
+     path: path.resolve(__dirname, 'dist'),
     },
     // module:{
     //   rules:[{
@@ -25,5 +26,13 @@ module.exports = {
     //   }]
 
     // }
-
+    module : {
+      rules : [
+          {
+              test : /\.js$/,
+              exclude : /node_modules/,
+              use : ['babel-loader']
+          }
+      ]
+  },
 }
